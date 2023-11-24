@@ -1,10 +1,11 @@
-from pynput.mouse import Controller
+from pynput.mouse import Controller as MouseController
+from pynput.keyboard import Key,Controller as KBController
 import tkinter as tk
 import time
 
-mouse = Controller()
-offsetY = -1
-offsetX = 1
+mouse = MouseController()
+kb = KBController()
+flag = True
 moveBy = 10
 root = tk.Tk()
 screen_width_half = root.winfo_screenwidth()/2
@@ -15,7 +16,11 @@ print("wakey wakey service started running. Press CTRL + C to exit.")
 mouse.position = (screen_width_half , screen_height_half )
 
 while True:
-	mouse.move(offsetX*moveBy ,offsetY*moveBy )
-	offsetY  = offsetY *(-1)
-	offsetX= offsetX *(-1)
+	if flag:
+		mouse.move(moveBy ,-moveBy)
+	else:
+		mouse.move(-moveBy ,moveBy)
+	kb.press(Key.scroll_lock)
+	kb.release(Key.scroll_lock)
+	flag = not flag
 	time.sleep(5)
