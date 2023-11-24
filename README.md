@@ -1,7 +1,6 @@
 # wakey_wakey
-Simulates mouse movement every 5 seconds.
+Simulates mouse movement and periodically presses the scroll lock key every 5 seconds to prevent the system from entering sleep mode.
 
-Dependencies: python3 , pynput , tkinter, time.
+Requirements: Python 3, pynput, tkinter, time.
 
-How to run : 
-python wakey_wakey.py
+To execute: Run the command "python wakey_wakey.py."
